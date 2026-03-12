@@ -1,6 +1,35 @@
 class MinStack {
 public:
-        stack<int> st;
+    //brute force approach where the getMin() scans the stack every time.
+    stack<int> st;
+    MinStack() {
+        
+    }
+    
+    void push(int val) {
+        st.push(val);
+    }
+    
+    void pop() {
+        st.pop();
+    }
+    
+    int top() {
+        return st.top();
+    }
+    
+    int getMin() {
+        stack<int> temp=st; //copy the stack st
+        int mini = INT_MAX;
+        while(!temp.empty()){
+            mini = min(mini, temp.top());
+            temp.pop();
+        }
+        return mini;
+        
+    }
+
+        /* stack<int> st;
         stack<int> minSt; //tracks min at every state
     MinStack() {
     }
@@ -28,6 +57,7 @@ public:
        return minSt.top(); //current min is always at top
     }
     //optimal approach- T.C - O(1) & S.C- O(n) we traded space for time by using extra stack to find the min.
+};*/
 };
 
 /**
