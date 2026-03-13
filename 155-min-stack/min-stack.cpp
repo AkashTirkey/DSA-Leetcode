@@ -1,7 +1,9 @@
 class MinStack {
+private:
+    stack<int> st;
+    // stack<int> minS;
 public:
     //brute force approach where the getMin() scans the stack every time.
-    stack<int> st;
     MinStack() {
         
     }
