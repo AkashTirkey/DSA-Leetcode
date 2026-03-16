@@ -10,12 +10,12 @@ public:
     return false;*/
     //time complexity - O(n^2) space-O(1)
 
-    //optimal solution with hash set
+    //optimal solution with hash set T.C-O(n) S.C-O(n)
     unordered_set<int> st;
     for(int i=0; i<nums.size(); i++){
-        if(st.find(nums[i])!=st.end()){
+        if(st.count(nums[i])){
             return true;
-            break;
+            // break;
         }
 
         st.insert(nums[i]);
