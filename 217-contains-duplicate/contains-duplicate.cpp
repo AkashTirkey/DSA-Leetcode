@@ -1,26 +1,28 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        //brute force approach 
-        /*for(int i=0; i<nums.size()-1; i++){
+        /*for(int i=0; i<nums.size(); i++){
             for(int j=i+1; j<nums.size(); j++){
-                if(nums[j]==nums[i]) return true;
+                if(nums[j] == nums[i]) return true;
             }
         }
-    return false;*/
-    //time complexity - O(n^2) space-O(1)
+        return false; //time complexity - O(n^2)*/
 
-    //optimal solution with hash set T.C-O(n) S.C-O(n)
-    unordered_set<int> st;
-    for(int i=0; i<nums.size(); i++){
-        if(st.count(nums[i])){
-            return true;
-            // break;
+        //optimal approach using hashset
+        unordered_set<int> st;
+        int n = nums.size();
+        for(int i=0; i<n; i++){
+            
+            //check if element already exists then return true
+            if(st.count(nums[i])){
+                return true;
+            }
+
+            //push the elements into set if not exist in st already
+            st.insert(nums[i]);
         }
 
-        st.insert(nums[i]);
-    }
-    return false;
+        return false;
 
     }
 };
