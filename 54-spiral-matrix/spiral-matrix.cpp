@@ -3,45 +3,45 @@ public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
         vector<int> result;
         int n = matrix.size();
-        int m=matrix[0].size();
+        int m = matrix[0].size();
         int top = 0, bottom=n-1;
-        int left = 0, right = m-1;
+        int left = 0, right=m-1;
+
 
         if(matrix.empty() || matrix[0].empty()) return result;
 
-        while(top<= bottom && left <= right){
+        while(top<=bottom && left<=right){
 
-            //sweep top row
-            for(int j=left; j<=right; j++){
-                result.push_back(matrix[top][j]);
+            //top row
+            for(int i =left; i<=right; i++){
+                result.push_back(matrix[top][i]);
             }
-            top++;
+            top++; // now top is 1
 
-
-            //sweep right col
-            for(int i=top; i<=bottom; i++){
-                result.push_back(matrix[i][right]);
+            //right col
+            for(int j=top; j<=bottom; j++){
+                result.push_back(matrix[j][right]);
             }
-            right--;
 
-            //bottom row
+            right--; //right is now m-2
+            
+            // bottom row
             if(top<=bottom) {
-                for(int j=right; j>=left; j--){
-                    result.push_back(matrix[bottom][j]);
+                for(int i = right; i>=left; i--){
+                    result.push_back(matrix[bottom][i]);
                 }
-                bottom--;
+                bottom--; // bottom is now n-2
             }
 
-            //left col
+            //left column
             if(left<=right){
-                for(int i=bottom; i>=top; i--){
-                    result.push_back(matrix[i][left]);
+                for(int j = bottom; j>=top; j--){
+                    result.push_back(matrix[j][left]);
                 }
                 left++;
             }
         }
-
         return result;
-        //Time complexity - O(n x m) space complexity - O(1)
+        // Time complexity = O(n x m) space complexity - O(1)
     }
 };
