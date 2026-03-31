@@ -1,25 +1,19 @@
 class Solution {
 public:
     void rotate(vector<vector<int>>& matrix) {
-          int n= matrix.size();
-          int m = matrix[0].size();
-          
-           //if the matrix is square then transpose the marix firstr
+        int n = matrix.size();
+        int m = matrix[0].size();
+
+        //step1 - transpose the given square matrix
         for(int i=0; i<n; i++){
             for(int j=i+1; j<m; j++){
                 swap(matrix[i][j], matrix[j][i]);
             }
         }
 
-    //reverse each row
-    for(int i=0; i<n; i++){
-         reverse(matrix[i].begin(), matrix[i].end());
-    }
-
-    //time complxity - O(n^2) space complexity - O(1)
-        
-
-
-    
+        // step2-reverse each row of the matrix
+        for(int i=0; i<n; i++){
+            reverse(matrix[i].begin(), matrix[i].end());
+        }
     }
 };
