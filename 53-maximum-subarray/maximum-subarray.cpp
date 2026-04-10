@@ -1,31 +1,36 @@
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
-        /*int maxSum = INT_MIN;
-        for(int i=0; i<nums.size(); i++){
-            int sum = 0;
-            for(int j = i; j<nums.size(); j++){
-                sum+=nums[j];
-                maxSum = max(maxSum,sum);
-            }
-        }
-        return maxSum;*/
-        //time complexity - O(n^2);
+        // int maxSum = INT_MIN;
+        // int n = nums.size();
+        // for(int i=0; i<n; i++){
+        //     int currentSum = 0;
+        //     for(int j=i; j<n; j++){
+        //         currentSum+=nums[j];
 
-        //optimal approach with kadane's algo 
+        //         //edge case
+        //         if(currentSum == 0) break;
 
-        //maintain a currentSum variable if the sum becomes < 0 make currentSum = 0 and      store maxSum in every iteration.
-        int maxSum = INT_MIN;
+        //         maxSum = max(maxSum,currentSum);
+        //     }
+        // }
+        // return maxSum;
+        //T.C = O(n^2) & S.C = O(1);
+
+        //optimal approach using sliding window ❌ kadane's algorithm✅
+        int maxSum = INT_MIN; 
         int currentSum = 0;
 
         for(int i=0; i<nums.size(); i++){
             currentSum+=nums[i];
 
-            maxSum = max(maxSum,currentSum);
+            maxSum = max(currentSum, maxSum);
             if(currentSum < 0) currentSum = 0;
-        }
 
+
+        }
         return maxSum;
 
+        //T.C - O(n) & S.C-O(1).
     }
 };
