@@ -1,32 +1,32 @@
 class Solution {
 public:
     int firstUniqChar(string s) {
-        //brute force approach - O(N^2)
         // for(int i=0; i<s.size(); i++){
-        //     int count = 0;
+        // int count = 0;
         //     for(int j=0; j<s.size(); j++){
-        //         if(s[j]==s[i]){
-        //             count++;
-        //         }
+        //         if(s[j] == s[i]) count++;
         //     }
+
         //     if(count == 1) return i;
         // }
         // return -1;
+        //Time complexity - O(N^2) Space complexity - O(1).
 
-        //optimal approach with T.C-O(n)
+        //optimal approach with t.c - O(n)
         vector<int> freq(26,0);
 
-         //first pass: Count frequencies
         for(char c:s){
-            freq[c-'a']++; //store the frquency 
+            freq[c-'a']++; //store the frequency.
         }
-        //second pass: find first unique character
+
+        //second pass : find first unique chracter
         for(int i=0; i<s.size(); i++){
-            if(freq[s[i]-'a']==1){
+            if(freq[s[i]- 'a']==1){
                 return i;
             }
         }
         return -1;
-        //we used vectors instead of map because in the problem it states that only              lowercase letters are allowed , for fixed and known range arrays > hashmap.
+                //we used vectors instead of map because in the problem it states that only              lowercase letters are allowed , for fixed and known range arrays > hashmap.
+
     }
 };
