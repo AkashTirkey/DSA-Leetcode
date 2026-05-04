@@ -2,18 +2,30 @@ class Solution {
 public:
     int arithmeticTriplets(vector<int>& nums, int diff) {
         //conditions are i<j<k 
-        int n = nums.size();
-        int triplets = 0;
-        for(int i=0; i<n; i++){
-            for(int j=i+1; j<n; j++){
-                for(int k=j+1; k<n; k++){
-                    if(nums[k] - nums[j] == diff && nums[j] - nums[i] == diff){
-                        triplets++;
-                    }
-                }
+        // int n = nums.size();
+        // int triplets = 0;
+        // for(int i=0; i<n; i++){
+        //     for(int j=i+1; j<n; j++){
+        //         for(int k=j+1; k<n; k++){
+        //             if(nums[k] - nums[j] == diff && nums[j] - nums[i] == diff){
+        //                 triplets++;
+        //             }
+        //         }
+        //     }
+        // }
+        // return triplets;
+        //Time complexity - O(n^3) space complexity - O(1).
+
+        //optimised approach
+        unordered_set<int> st(nums.begin(), nums.end()); //every lookup is O(1).
+        int count = 0;
+        for(int x :nums){
+            if(st.count(x+diff) && st.count(x+ 2*diff)){
+                count++;
             }
         }
-        return triplets;
-        //Time complexity - O(n^3) space complexity - O(1).
+        return count; 
+        //T.C - O(n) S.C - O(n).
+
     }
 };
