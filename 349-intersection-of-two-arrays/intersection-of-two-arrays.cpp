@@ -1,36 +1,48 @@
 class Solution {
 public:
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
-        //brute force approach with Time complexity - O(n^2) 
-        int n=nums1.size();
-        int m=nums2.size();
-       /* unordered_set<int> st; //to avoid duplicates
+        // int n = nums2.size();
+        // vector<int> ans;
+        // unordered_set<int> st;
 
-        for(int i=0; i<n; i++){
-            for(int j=0; j<m; j++){
-                if(nums2[j] == nums1[i]){
-                    st.insert(nums1[i]);
-                    break;
-                }
+        // for(int i=0; i<nums1.size(); i++){
+        //     for(int j=0; j<nums2.size(); j++){
+        //         if(nums2[j] == nums1[i]){
+        //             st.insert(nums2[j]);
+        //         }
+        //     }
+        // }
+
+        //pushing st elements to ans vector
+        // for(int num : st){
+        //     ans.push_back(num);
+        // }
+
+        // return ans;
+        //T.C = O(n^2)  S.C -O(k); i.e k is the number of unique elements.
+
+        //optimised approach with O(n) T.C
+        unordered_set<int> st1; //O(n).
+        unordered_set<int> st2; //O(m).
+
+        for(int num:nums1){
+            st1.insert(num);
+        }
+
+        for(int num:nums2){
+            st2.insert(num);
+        }
+
+        vector<int> ans;
+        for(int num:st1){
+           if(st2.count(num)){
+                ans.push_back(num);
             }
         }
+        return ans;
+        //time complexity - O(n+m) & space complexity - O(n+m)
 
-        return vector<int>(st.begin(), st.end());*/
 
-        //optimal approach using hashset and T.C= O(n)
-        unordered_set<int> st1; //to store the elements of nums1
-        unordered_set<int> st2; //to store the final elements
 
-        for(int i=0; i<n; i++){
-            st1.insert(nums1[i]);
-        }
-
-        for(int i=0; i<m; i++){
-            if(st1.find(nums2[i])!=st1.end()){
-                st2.insert(nums2[i]);
-            }
-        }
-
-        return vector<int>(st2.begin(), st2.end());
     }
 };
