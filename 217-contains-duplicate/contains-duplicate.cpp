@@ -1,28 +1,34 @@
 class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) {
-        /*for(int i=0; i<nums.size(); i++){
-            for(int j=i+1; j<nums.size(); j++){
-                if(nums[j] == nums[i]) return true;
-            }
-        }
-        return false; //time complexity - O(n^2)*/
+        //  [1,2,3,1] o/p- true
+
+        // bool flag = false;
+        // for(int i=0; i<nums.size()-1; i++){
+        //     for(int j=i+1; j<nums.size(); j++){
+        //         if(nums[j] == nums[i]){
+        //             return true;
+        //         }
+        //     }
+        // }
+        // return false;
+        //T.C - O(n^2)  S.C - O(1).
 
         //optimal approach using hashset
         unordered_set<int> st;
-        int n = nums.size();
-        for(int i=0; i<n; i++){
-            
-            //check if element already exists then return true
+        // for(int num:nums){
+        //     st.insert(num);
+        // } //T.C - O(n).
+
+        for(int i = 0; i<nums.size(); i++){
             if(st.count(nums[i])){
                 return true;
             }
-
-            //push the elements into set if not exist in st already
-            st.insert(nums[i]);
+            else st.insert(nums[i]);
         }
-
         return false;
 
+        //T.C - O(n) S.C- O(n); via trade off.
+        
     }
 };
