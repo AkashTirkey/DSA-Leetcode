@@ -1,39 +1,36 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        //2 strings are anagram of each other when 
-        //a) They contain the same characters.
-        //b) Each character appears the same number of times.
-        // int n=s.size();
-        // int m=t.size();
-        
-        // for(int i=0; i<n; i++){
+        //2 strings are anagram of each other, when their frequencies match and their 
+        // for(int i=0; i<s.size(); i++){
         //     int countS = 0;
         //     int countT = 0;
-        //     for(int j=0; j<m; j++){
-        //         if(s[j]==s[i]) countS++;
-        //         if(t[j]==s[i]) countT++;
+        //     for(int j=0; j<t.size(); j++){
+        //         if(s[i] == s[j]) countS++;
+        //         if(t[j] == s[i]) countT++;
         //     }
+
         //     if(countS!=countT) return false;
         // }
         // return true;
-        //Time Complexity - O(n^2) & space complexity - O(1)
 
-        //optimal approach using hashmap
-        unordered_map<char,int> mp;
 
-        for(char ch:s){
-            mp[ch]++;
+        //optimised approach
+        unordered_map<char,int> mp1;
+        // unordered_set<char> st2;
+
+        for(int i=0; i<s.size(); i++){
+            mp1[s[i]]++;
         }
 
-        for(char ch:t){
-            mp[ch]--;
+        for(int i=0; i<t.size(); i++){
+            mp1[t[i]]--;
         }
 
-        for(auto it : mp){
-            if(it.second != 0) return false;
+        for(auto it:mp1){
+            if(it.second!=0) return false;
         }
         return true;
-
+        //T.C - O(n) S.C-O(n)
     }
 };
