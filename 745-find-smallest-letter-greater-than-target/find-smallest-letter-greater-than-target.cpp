@@ -15,6 +15,8 @@ public:
             //otherwise search right half
             else left = mid+1;
         }
+
+        //if nothing found then wrap around
          return letters[left % n];
          //T.C - O(logn).
          //S.C - O(1)
